@@ -3,14 +3,14 @@
 import { FormEvent } from "react";
 
 const fieldClass =
-  "min-h-11 w-full rounded-xl border border-line bg-cream px-3 py-2.5 text-sm text-ink";
+  "min-h-11 w-full rounded-sm border border-ink/15 bg-cream px-3 py-2.5 text-sm text-ink";
 
 export function EnquiryForm({ email }: { email: string }) {
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const project = String(data.get("project") ?? "").trim();
-    const budget = String(data.get("budget") ?? "");
+    const budget = String(data.get("budget") ?? "").trim();
     const timeline = String(data.get("timeline") ?? "");
     const body = [
       `Project: ${project}`,
@@ -26,7 +26,7 @@ export function EnquiryForm({ email }: { email: string }) {
   return (
     <form onSubmit={onSubmit} className="mt-6 space-y-4">
       <div>
-        <label htmlFor="project" className="text-sm font-bold">
+        <label htmlFor="project" className="kicker">
           Project name
         </label>
         <input
@@ -38,31 +38,19 @@ export function EnquiryForm({ email }: { email: string }) {
         />
       </div>
       <div>
-        <label htmlFor="budget" className="text-sm font-bold">
+        <label htmlFor="budget" className="kicker">
           Budget range
         </label>
-        <div className="relative mt-2">
-          <select
-            id="budget"
-            name="budget"
-            required
-            defaultValue=""
-            className={`${fieldClass} appearance-none pr-10`}
-          >
-            <option value="" disabled>
-              Select a range
-            </option>
-            <option>Not sure yet</option>
-            <option>Under $2,000</option>
-            <option>$2,000–$8,000</option>
-            <option>$8,000–$20,000</option>
-            <option>Over $20,000</option>
-          </select>
-          <Chevron />
-        </div>
+        <input
+          id="budget"
+          name="budget"
+          required
+          autoComplete="off"
+          className={`${fieldClass} mt-2`}
+        />
       </div>
       <div>
-        <label htmlFor="timeline" className="text-sm font-bold">
+        <label htmlFor="timeline" className="kicker">
           Timeline
         </label>
         <div className="relative mt-2">
@@ -86,12 +74,12 @@ export function EnquiryForm({ email }: { email: string }) {
       </div>
       <button
         type="submit"
-        className="btn btn-fill mt-2 inline-flex min-h-11 w-full cursor-pointer items-center justify-center rounded-full bg-ink text-sm font-bold text-cream"
+        className="btn btn-fill mt-2 inline-flex min-h-11 w-full cursor-pointer items-center justify-center rounded-sm bg-ink font-display text-lg italic text-cream"
       >
         Send enquiry
       </button>
-      <p className="text-sm leading-6 text-muted">
-        Opens an email to Carter. Or write straight to{" "}
+      <p className="text-sm leading-6">
+        Or write straight to{" "}
         <a
           className="font-bold break-all text-ink underline decoration-ink/30 underline-offset-4"
           href={`mailto:${email}`}

@@ -1,36 +1,38 @@
 import type { Metadata } from "next";
-import { Fredoka, Nunito } from "next/font/google";
+import { Playfair_Display, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 
-const fredoka = Fredoka({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-fredoka",
-  weight: ["500", "600", "700"],
+  variable: "--font-playfair",
+  style: ["normal", "italic"],
+  weight: ["400", "600", "700"],
 });
 
-const nunito = Nunito({
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
-  variable: "--font-nunito",
+  variable: "--font-source-serif",
+  style: ["normal", "italic"],
   weight: ["400", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Wheelie Good Film",
+  title: "A Wheelie Good Film Company",
   description:
     "A Wheelie Good Film Company. Short films written and directed by Carter Jayne in Meanjin / Brisbane, and a film week for ages 8 to 17.",
 };
 
 export const viewport = {
-  themeColor: "#8ec6de",
+  themeColor: "#9aab8f",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${fredoka.variable} ${nunito.variable} h-full antialiased`}
+      className={`${playfair.variable} ${sourceSerif.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-paper font-sans text-ink">{children}</body>
+      <body className="min-h-full bg-sage font-sans text-ink">{children}</body>
     </html>
   );
 }

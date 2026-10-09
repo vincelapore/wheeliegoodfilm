@@ -73,7 +73,7 @@ export function SiteHeader() {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-20 bg-sky/95 backdrop-blur-sm"
+      className="sticky top-0 z-20 bg-sage/92 backdrop-blur-md"
     >
       <div className="mx-auto flex max-w-[1120px] items-center justify-between gap-4 px-5 py-3 md:px-8">
         <a
@@ -81,16 +81,18 @@ export function SiteHeader() {
           className="flex min-h-11 items-center gap-3"
           onClick={closeMenu}
         >
-          <WheelMark priority className="h-11 w-auto" />
-          <span className="font-display text-2xl leading-none font-semibold">
-            Wheelie Good Film
+          <span className="inline-flex shrink-0 -rotate-3 bg-cream p-1 shadow-[0_6px_10px_rgba(44,44,40,0.12)]">
+            <WheelMark priority className="h-9 w-auto md:h-11" />
+          </span>
+          <span className="wordmark max-w-[9.2rem] sm:max-w-none">
+            A Wheelie Good Film Company
           </span>
         </a>
 
         <button
           ref={menuButtonRef}
           type="button"
-          className="menu-button btn inline-flex size-11 items-center justify-center rounded-full text-ink md:hidden"
+          className="menu-button btn inline-flex size-11 shrink-0 items-center justify-center rounded-sm text-ink md:hidden"
           aria-expanded={open}
           aria-controls={menuId}
           aria-label={open ? "Close menu" : "Open menu"}
@@ -104,7 +106,7 @@ export function SiteHeader() {
           aria-label="Primary"
           className={
             open
-              ? "absolute inset-x-0 top-full block bg-cream px-5 py-3 shadow-[0_16px_32px_rgba(27,58,75,0.12)] md:static md:bg-transparent md:p-0 md:shadow-none"
+              ? "absolute inset-x-0 top-full block bg-cream px-5 py-3 shadow-[0_16px_32px_rgba(44,44,40,0.12)] md:static md:bg-transparent md:p-0 md:shadow-none"
               : "hidden md:block"
           }
         >
@@ -117,7 +119,7 @@ export function SiteHeader() {
                   <a
                     href={item.href}
                     aria-current={current ? "true" : undefined}
-                    className="nav-link flex min-h-11 items-center rounded-2xl px-4 text-base font-semibold text-ink md:inline-flex md:rounded-full md:px-3 md:text-sm"
+                    className="nav-link flex min-h-11 items-center rounded-sm px-4 font-display text-base italic text-ink md:inline-flex md:px-3 md:text-sm"
                     onClick={closeMenu}
                   >
                     {item.label}
@@ -128,7 +130,7 @@ export function SiteHeader() {
             <li className="pt-2 md:pt-0 md:pl-2">
               <a
                 href="#brief"
-                className="btn btn-fill inline-flex min-h-11 w-full items-center justify-center rounded-full bg-ink px-4 text-sm font-bold text-cream md:w-auto"
+                className="btn btn-fill inline-flex min-h-11 w-full items-center justify-center rounded-sm bg-ink px-4 font-display text-base italic text-cream md:w-auto"
                 onClick={closeMenu}
               >
                 Hire us

@@ -2,54 +2,58 @@
 
 :root {
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-  --paper: #fff6e8;
-  --ink: #1b3a4b;
-  --muted: #5c4a3a;
-  --line: #eadcc8;
-  --oxide: #b24a36;
-  --night: #1a4568;
-  --cream: #fff6e8;
-  --gold: #f0d56a;
-  --gold-deep: #e0c04a;
-  --blush: #f6d5ce;
-  --blush-deep: #e8b4ae;
-  --sage: #c5d9b4;
-  --sage-deep: #a8c99a;
-  --sky: #8ec6de;
-  --sky-deep: #79b7d4;
+  --sage: #9aab8f;
+  --ink: #2c2c28;
+  --muted: #3e4438;
+  --cream: #f7f0e0;
+  --paper: #f7f0e0;
+  --night: #2c2c28;
+  --pine: #56624e;
+  --leaf: #8fa67c;
+  --tape: #b06a46;
+  --mist: #d5e3cc;
+  --line: #ddd4c4;
 }
 
 @theme inline {
-  --color-paper: var(--paper);
+  --color-sage: var(--sage);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
-  --color-line: var(--line);
-  --color-oxide: var(--oxide);
-  --color-night: var(--night);
   --color-cream: var(--cream);
-  --color-gold: var(--gold);
-  --color-blush: var(--blush);
-  --color-sage: var(--sage);
-  --color-sky: var(--sky);
-  --font-sans: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-fredoka), ui-sans-serif, system-ui, sans-serif;
+  --color-paper: var(--paper);
+  --color-night: var(--night);
+  --color-pine: var(--pine);
+  --color-leaf: var(--leaf);
+  --color-tape: var(--tape);
+  --color-mist: var(--mist);
+  --color-line: var(--line);
+  --font-sans: var(--font-source-serif), ui-serif, Georgia, "Times New Roman", serif;
+  --font-display: var(--font-playfair), ui-serif, Georgia, "Times New Roman", serif;
+}
+
+html {
+  background: var(--sage);
 }
 
 body {
-  background: var(--paper);
+  background-color: var(--sage);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  background-blend-mode: multiply;
   color: var(--ink);
   font-family: var(--font-sans);
   overflow-x: clip;
 }
 
 ::selection {
-  background: var(--gold);
-  color: var(--ink);
+  background: var(--pine);
+  color: var(--cream);
 }
 
 :focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 3px;
+  box-shadow: 0 0 0 5px var(--cream);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -63,31 +67,196 @@ body {
   left: 1rem;
   top: -4rem;
   z-index: 50;
-  background: var(--night);
+  background: var(--ink);
   color: var(--cream);
   padding: 0.6rem 1rem;
   font-weight: 600;
-  border-radius: 999px;
 }
 
 .skip:focus {
   top: 1rem;
 }
 
-.door {
-  transition: background-color 160ms ease;
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  line-height: 1.35;
 }
 
-.door[data-tone="blush"] {
-  background: var(--blush);
+.kicker {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
 }
 
-.door[data-tone="gold"] {
-  background: var(--gold);
+.scrap-shadow {
+  --tilt: 0deg;
+  transform: rotate(var(--tilt));
+  filter: drop-shadow(0 14px 16px rgba(44, 44, 40, 0.16));
+  transition: transform 180ms var(--ease-out);
 }
 
-.door[data-tone="sage"] {
-  background: var(--sage);
+.paper-plain {
+  background-color: #f7f0e0;
+}
+
+.paper-lined {
+  background-color: #f6f0e2;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 31px,
+    rgba(138, 164, 192, 0.55) 31px,
+    rgba(138, 164, 192, 0.55) 32px
+  );
+  background-position: 0 16px;
+}
+
+.paper-graph {
+  background-color: #f3f7fb;
+  background-image:
+    linear-gradient(rgba(146, 176, 206, 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(146, 176, 206, 0.5) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.tape-strip {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.32),
+      rgba(255, 255, 255, 0) 40%,
+      rgba(0, 0, 0, 0.08)
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0) 14%,
+      rgba(0, 0, 0, 0) 86%,
+      rgba(0, 0, 0, 0.12)
+    ),
+    var(--tape);
+}
+
+.tear-a {
+  clip-path: polygon(
+    1% 2%,
+    10% 0.3%,
+    22% 1.8%,
+    36% 0.2%,
+    51% 1.5%,
+    66% 0.2%,
+    80% 1.6%,
+    93% 0.3%,
+    99.4% 1.8%,
+    100% 16%,
+    98.8% 34%,
+    100% 52%,
+    99% 71%,
+    100% 88%,
+    98.5% 98.2%,
+    86% 100%,
+    70% 98.5%,
+    54% 100%,
+    38% 98.6%,
+    20% 100%,
+    7% 98.4%,
+    0.4% 97%,
+    0% 80%,
+    1.3% 62%,
+    0% 44%,
+    1.1% 24%,
+    0% 8%
+  );
+}
+
+.tear-b {
+  clip-path: polygon(
+    0.4% 1.2%,
+    12% 1.8%,
+    27% 0.2%,
+    44% 1.6%,
+    60% 0.2%,
+    76% 1.7%,
+    90% 0.4%,
+    100% 2%,
+    99% 18%,
+    100% 38%,
+    98.7% 57%,
+    100% 76%,
+    99.2% 97%,
+    84% 98.4%,
+    67% 100%,
+    49% 98.5%,
+    32% 100%,
+    16% 98.6%,
+    2% 100%,
+    0% 86%,
+    1.4% 68%,
+    0% 50%,
+    1.2% 30%,
+    0% 12%
+  );
+}
+
+.tear-c {
+  clip-path: polygon(
+    2% 3%,
+    14% 0%,
+    28% 2.4%,
+    46% 0.2%,
+    64% 2.2%,
+    82% 0%,
+    98% 2.6%,
+    100% 20%,
+    98% 42%,
+    100% 64%,
+    97.5% 86%,
+    100% 99%,
+    78% 97%,
+    56% 100%,
+    34% 97.5%,
+    12% 100%,
+    0% 90%,
+    2% 70%,
+    0% 48%,
+    1.6% 26%,
+    0% 8%
+  );
+}
+
+.gingham {
+  background-color: #e5f0d8;
+  background-image:
+    linear-gradient(90deg, rgba(92, 122, 74, 0.34) 50%, transparent 50%),
+    linear-gradient(rgba(92, 122, 74, 0.34) 50%, transparent 50%);
+  background-size: 12px 12px;
+}
+
+.sequin {
+  width: 0.72rem;
+  height: 0.72rem;
+  border-radius: 999px;
+  box-shadow:
+    inset -1px -1px 2px rgba(0, 0, 0, 0.28),
+    inset 1.5px 1.5px 2px rgba(255, 255, 255, 0.72);
+}
+
+.sequin-gold {
+  background: radial-gradient(circle at 35% 35%, #f3d48a, #c4963c 58%, #8d6428);
+}
+
+.sequin-rose {
+  background: radial-gradient(circle at 35% 35%, #f6d2c8, #d88878 58%, #a85c56);
+}
+
+.sequin-green {
+  background: radial-gradient(circle at 35% 35%, #9ed6ae, #2f7a4c 60%, #1c4a30);
 }
 
 .nav-link {
@@ -95,7 +264,8 @@ body {
 }
 
 .nav-link[aria-current="true"] {
-  background-color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
 }
 
 .btn {
@@ -115,54 +285,41 @@ body {
     background-color 160ms ease;
 }
 
-.marquee {
-  animation: marquee 36s linear infinite;
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+.footer-edge {
+  clip-path: polygon(
+    0 18px,
+    4% 8px,
+    9% 16px,
+    16% 6px,
+    24% 15px,
+    33% 7px,
+    44% 16px,
+    56% 6px,
+    67% 15px,
+    78% 7px,
+    88% 16px,
+    96% 8px,
+    100% 14px,
+    100% 100%,
+    0 100%
+  );
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .door[data-tone="blush"]:hover {
-    background-color: var(--blush-deep);
-  }
-
-  .door[data-tone="gold"]:hover {
-    background-color: var(--gold-deep);
-  }
-
-  .door[data-tone="sage"]:hover {
-    background-color: var(--sage-deep);
+  .scrap-shadow:hover {
+    transform: rotate(var(--tilt)) translateY(-4px);
   }
 
   .nav-link:hover {
-    background-color: var(--sky-deep);
-  }
-
-  .menu-button:hover {
-    background-color: var(--sky-deep);
-  }
-
-  .nav-link[aria-current="true"]:hover {
-    background-color: var(--gold-deep);
+    background-color: color-mix(in srgb, var(--cream) 72%, transparent);
   }
 
   .btn-fill:hover {
-    background-color: #122a38;
-  }
-
-  .btn-gold:hover {
-    background-color: var(--gold-deep);
+    background-color: #1f1f1c;
   }
 
   .btn-line:hover {
-    background-color: var(--cream);
+    background-color: color-mix(in srgb, var(--cream) 78%, transparent);
   }
 
   .play:hover {
@@ -175,11 +332,18 @@ body {
     transform: none;
   }
 
+  .scrap-shadow:hover {
+    transform: rotate(var(--tilt));
+  }
+
   .play:hover {
     transform: translate(-50%, -50%);
   }
+}
 
-  .marquee {
-    animation: none;
+@media (min-width: 640px) {
+  .wordmark {
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
   }
 }
