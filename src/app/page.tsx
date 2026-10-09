@@ -1,6 +1,7 @@
-import type { ReactNode } from "react";
+import { EnquiryForm } from "@/components/enquiry-form";
 import { FilmPlayer } from "@/components/film-player";
-import { BurstFrame, WheelMark } from "@/components/wheel-mark";
+import { SiteHeader } from "@/components/site-header";
+import { WheelMark } from "@/components/wheel-mark";
 
 const ticketsUrl = "https://events.humanitix.com/wheelie-good-film-week";
 const instagramUrl = "https://www.instagram.com/wheeliegoodfilm.co/";
@@ -9,46 +10,39 @@ const email = "wheeliegoodfilm.co@outlook.com";
 const mapsUrl =
   "https://www.google.com/maps/search/?api=1&query=23+Glenelg+Street+South+Brisbane+QLD+4101";
 
-const nav = [
+const footerNav = [
   { href: "#work", label: "Work" },
   { href: "#about", label: "About" },
   { href: "#week", label: "Film week" },
   { href: "#contact", label: "Contact" },
 ];
 
-const doors = [
+const services = [
   {
-    index: "01",
-    href: "#work",
-    title: "The work",
-    body: "The Stars and Obsessive Compulsive Confliction. Both written and directed in 2024.",
-    action: "Watch",
     tone: "blush",
+    title: "Short films",
+    body: "Development through to a rough cut, for your story.",
   },
   {
-    index: "02",
-    href: "#week",
-    title: "Workshops",
-    body: "Film week, 28 Sep–2 Oct. Ages 8 to 17, at VentSpace in South Brisbane.",
-    action: "See the week",
     tone: "gold",
+    title: "Commercial & brand",
+    body: "Content for businesses that want to look like they mean it.",
   },
   {
-    index: "03",
-    href: `mailto:${email}`,
-    title: "Contact",
-    body: email,
-    action: "Write to Carter",
     tone: "sage",
+    title: "Actor showreels",
+    body: "A clean shoot and cut to get actors seen.",
   },
 ];
 
-const marquee = [
-  "Short films",
-  "Film week",
-  "Meanjin",
-  "Write to Carter",
+const kit = [
+  { term: "Story", detail: "On the page before the shoot" },
+  { term: "Camera", detail: "A cinema kit, kept light" },
+  { term: "Sound", detail: "Recorded on set" },
+  { term: "Delivery", detail: "A cut you can show" },
 ];
+
+const anchor = "scroll-mt-28";
 
 const films = [
   {
@@ -57,7 +51,6 @@ const films = [
     year: "2024",
     runtime: "8 min",
     kind: "Comedy",
-    credit: "Written and directed by Carter Jayne",
     logline:
       "Rio takes on a missing-janitor case at school. Her friends plant the clues, then spend the day trying not to be caught.",
   },
@@ -67,11 +60,7 @@ const films = [
     year: "2024",
     runtime: "3 min",
     kind: "Short",
-    credit:
-      "Written and directed by Carter Jayne, with Souper Chicken Productions",
-    logline:
-      "A short about the difficult work of accepting an OCD diagnosis.",
-    note: "Assistant director Jess Tredinnick. Production assistant Rocio Gonzales.",
+    logline: "A short about the difficult work of accepting an OCD diagnosis.",
   },
 ];
 
@@ -82,288 +71,108 @@ export default function Home() {
         Skip to content
       </a>
 
-      <header className="sticky top-0 z-20 bg-sky/95 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-[1120px] flex-col gap-4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between md:px-8">
-          <a href="#top" className="flex items-center gap-3">
-            <WheelMark className="size-8 text-ink" />
-            <span className="font-display text-2xl leading-none font-semibold">
-              Wheelie Good Film
-            </span>
-          </a>
-          <nav aria-label="Primary">
-            <ul className="flex flex-wrap gap-1">
-              {nav.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    className="nav-link inline-flex min-h-9 items-center rounded-full px-3 text-sm font-semibold text-ink"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main id="content">
         <section id="top" className="bg-sky">
-          <div className="mx-auto grid max-w-[1120px] items-center gap-10 px-5 pt-10 pb-12 md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:px-8 md:pt-14 md:pb-16">
-            <div>
-              <p className="text-sm font-bold text-ink">
-                A Wheelie Good Film Company · Meanjin
-              </p>
-              <h1 className="mt-4 max-w-xl font-display text-[clamp(3rem,6vw,5.2rem)] leading-[0.95] font-bold tracking-tight text-balance">
-                <span className="sr-only">Wheelie Good Film. </span>
-                Films, a{" "}
-                <span className="rounded-lg bg-gold px-1.5 whitespace-nowrap">
-                  workshop
-                </span>
-                , and a direct line.
-              </h1>
-              <p className="mt-5 max-w-md text-lg leading-8">
-                Carter Jayne writes and directs the shorts. He is a disabled
-                filmmaker. The company also runs Film Week, and he reads the
-                email.
-              </p>
-            </div>
-            <a href="#work" className="group mx-auto block w-full max-w-[380px]">
-              <span className="relative block aspect-square">
-                <BurstFrame className="absolute inset-0 text-gold" />
-                <span className="absolute inset-[22%] overflow-hidden rounded-full bg-night ring-4 ring-cream">
-                  <img
-                    src="https://i.ytimg.com/vi/VuvVMObebqU/hqdefault.jpg"
-                    alt="Still from Obsessive Compulsive Confliction: hands resting on a leather journal"
-                    width={480}
-                    height={360}
-                    className="absolute inset-x-0 top-[-42%] h-[250%] w-full max-w-none object-cover object-top"
-                  />
-                </span>
-              </span>
-              <span className="mt-3 block text-center text-sm font-bold">
-                Obsessive Compulsive Confliction, 2024
-              </span>
-            </a>
-          </div>
-          <div className="mx-auto max-w-[1120px] px-5 pb-12 md:px-8 md:pb-16">
-            <ul className="grid gap-4 md:grid-cols-3">
-              {doors.map((door) => (
-                <li key={door.index}>
-                  <a
-                    href={door.href}
-                    data-tone={door.tone}
-                    className="door flex h-full min-h-48 flex-col rounded-3xl p-6 md:p-7"
-                  >
-                    <p className="text-sm font-bold">{door.index}</p>
-                    <p className="mt-3 font-display text-3xl leading-none font-bold">
-                      {door.title}
-                    </p>
-                    <p className="mt-3 max-w-xs text-sm leading-6 text-muted">
-                      {door.body}
-                    </p>
-                    <p className="mt-auto pt-8">
-                      <span className="inline-flex min-h-9 items-center rounded-full bg-ink px-4 text-sm font-bold text-cream">
-                        {door.action}
-                      </span>
-                    </p>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <div className="overflow-hidden bg-gold text-ink">
-          <p className="sr-only">
-            Short films, film week, Meanjin, and a note to Carter.
-          </p>
-          <div className="marquee flex w-max py-3" aria-hidden="true">
-            {[0, 1].map((copy) => (
-              <p key={copy} className="flex shrink-0 font-display text-lg font-semibold">
-                {marquee.map((item) => (
-                  <span key={`${copy}-${item}`} className="px-4">
-                    {item}
-                    <span className="px-4" aria-hidden="true">
-                      ·
-                    </span>
-                  </span>
-                ))}
-              </p>
-            ))}
-          </div>
-        </div>
-
-        <section id="work" className="scroll-mt-20">
-          <div className="mx-auto max-w-[1120px] px-5 py-16 md:px-8 md:py-20">
-            <div className="flex items-end justify-between gap-6">
-              <h2 className="font-display text-4xl font-bold tracking-tight md:text-6xl">
-                Selected work
-              </h2>
+          <div className="mx-auto max-w-[1120px] px-5 pt-10 pb-8 md:px-8 md:pt-16">
+            <h1 className="mt-4 max-w-3xl font-display text-[clamp(2.8rem,6vw,4.8rem)] leading-[0.95] font-bold tracking-tight text-balance">
+              Films made by humans, for humans.
+            </h1>
+            <p className="mt-5 max-w-xl text-lg leading-8">
+              We shoot short films, brand work and showreels, and we teach
+              people how to make their own. Based in Meanjin.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
               <a
-                className="hidden text-sm font-bold underline decoration-ink/30 underline-offset-4 sm:inline"
-                href={youtubeUrl}
+                href="#brief"
+                className="btn btn-fill inline-flex min-h-11 items-center justify-center rounded-full bg-ink px-5 text-sm font-bold text-cream"
+              >
+                Hire us for Production
+              </a>
+              <a
+                href={ticketsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="btn btn-line inline-flex min-h-11 items-center justify-center rounded-full border-2 border-ink px-5 text-sm font-bold"
               >
-                All films
+                Book a Workshop
+                <span className="sr-only"> (opens in a new tab)</span>
               </a>
             </div>
+          </div>
 
-            <div className="mt-10">
-              {films.map((film, index) => (
-                <article
-                  key={film.videoId}
-                  className={`flex flex-col gap-8 py-12 md:flex-row md:items-center md:gap-12 ${
-                    index % 2 === 1 ? "md:flex-row-reverse" : ""
-                  }`}
-                >
-                  <div className="md:w-[58%]">
-                    <FilmPlayer
-                      videoId={film.videoId}
-                      title={`${film.title}, ${film.year}`}
-                    />
-                  </div>
-                  <div className="md:w-[42%]">
-                    <p className="text-sm">
-                      <span className="rounded-full bg-gold px-3 py-1 text-xs font-bold text-ink">
-                        {film.kind}
-                      </span>
-                      <span className="text-muted">
-                        <span aria-hidden="true"> · </span>
-                        {film.year}
-                        <span aria-hidden="true"> · </span>
-                        {film.runtime}
-                      </span>
-                    </p>
-                    <h3 className="mt-3 font-display text-4xl leading-tight font-bold">
-                      {film.title}
-                    </h3>
-                    <p className="mt-4 text-lg leading-8">{film.logline}</p>
-                    <p className="mt-4 text-sm leading-6 text-muted">{film.credit}</p>
-                    {"note" in film && film.note ? (
-                      <p className="mt-2 text-sm leading-6 text-muted">{film.note}</p>
-                    ) : null}
-                  </div>
-                </article>
-              ))}
-
-              <article className="py-12">
-                <p>
-                  <span className="rounded-full bg-blush px-3 py-1 text-xs font-bold text-ink">
-                    Music
-                  </span>
-                </p>
-                <h3 className="mt-3 font-display text-3xl leading-tight font-bold md:text-4xl">
-                  Song of Fairies Robbing an Orchard
-                </h3>
-                <p className="mt-4 max-w-xl leading-7 text-muted">
-                  A Wheelie Good Film Company title, with a backing track by
-                  composer Kayley Nolan.
-                </p>
-              </article>
-            </div>
-
-            <p className="pt-4 text-sm leading-6 text-muted">
-              <a
-                className="font-bold text-ink underline decoration-ink/30 underline-offset-4"
-                href={instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram
-              </a>{" "}
-              also carries Fighting Love and Project LL.
+          <div className="mx-auto max-w-[1120px] px-5 pb-12 md:px-8">
+            <FilmPlayer videoId={films[0].videoId} title="The Stars, 2024" />
+            <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-6">
+              The Stars, 2024. A comedy written and directed by Carter Jayne.
             </p>
           </div>
-        </section>
 
-        <section id="about" className="scroll-mt-20 bg-night text-cream">
-          <div className="mx-auto grid max-w-[1120px] gap-10 px-5 py-16 md:grid-cols-[1.2fr_0.8fr] md:px-8 md:py-24">
-            <div>
-              <p className="text-sm font-bold text-gold">The company</p>
-              <h2 className="mt-4 font-display text-[clamp(2.4rem,4vw,3.8rem)] leading-tight font-bold">
-                Named for the founder. Judged on the film.
-              </h2>
-              <div className="mt-6 max-w-xl space-y-4 text-lg leading-8 text-cream/85">
-                <p>
-                  Carter Jayne is disabled, and he runs A Wheelie Good Film
-                  Company from Meanjin / Brisbane. He is an independent
-                  filmmaker and a film student. Wheelie is the pun. Good is
-                  the standard.
-                </p>
-                <p>
-                  The released shorts are The Stars and Obsessive Compulsive
-                  Confliction.
-                  The second was made with Souper Chicken Productions.
-                </p>
-              </div>
-            </div>
-            <dl className="divide-y divide-line rounded-3xl bg-cream px-6 text-ink">
-              <Fact term="Founder" detail="Carter Jayne" />
-              <Fact term="Based" detail="Meanjin / Brisbane" />
-              <Fact term="Practice" detail="Short films, and a youth intensive" />
-              <Fact
-                term="Email"
-                detail={
-                  <a className="font-bold underline decoration-ink/30 underline-offset-4" href={`mailto:${email}`}>
-                    {email}
-                  </a>
-                }
-              />
-            </dl>
-          </div>
-        </section>
-
-        <section id="week" className="scroll-mt-20 bg-blush">
-          <div className="mx-auto max-w-[1120px] px-5 py-16 md:px-8 md:py-24">
-            <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-              <div>
-                <p className="inline-flex rounded-full bg-gold px-4 py-1.5 text-sm font-bold text-ink">
-                  28 Sep – 2 Oct 2026
-                </p>
-                <h2 className="mt-4 font-display text-[clamp(2.4rem,4vw,3.8rem)] leading-tight font-bold">
-                  Wheelie Good Film Week
-                </h2>
-                <p className="mt-4 max-w-md text-lg leading-8 text-muted">
-                  A five-day intensive at VentSpace for filmmakers aged 8 to
-                  17. Two groups. Script, storyboard, a supervised shoot, an
-                  edit, and a Friday screening. One day or the full week.
-                </p>
+          <div className="mx-auto max-w-[1120px] px-5 pb-16 md:px-8 md:pb-20">
+            <ul className="grid gap-4 md:grid-cols-2">
+              <li>
                 <a
-                  className="btn btn-fill mt-8 inline-flex min-h-11 items-center justify-center rounded-full bg-ink px-5 text-sm font-bold text-cream"
+                  href="#production"
+                  className="door flex h-full min-h-64 flex-col rounded-3xl p-6 md:p-7"
+                  data-tone="gold"
+                >
+                  <p className="text-sm font-bold">Production</p>
+                  <h2 className="mt-3 font-display text-3xl leading-none font-bold md:text-4xl">
+                    Hire us to make your film
+                  </h2>
+                  <p className="mt-3 max-w-md leading-7">
+                    Short films, commercial brand work and actor showreels, shot
+                    properly.
+                  </p>
+                  <p className="mt-auto pt-8">
+                    <span className="inline-flex min-h-9 items-center rounded-full bg-ink px-4 text-sm font-bold text-cream">
+                      See services
+                    </span>
+                  </p>
+                </a>
+              </li>
+              <li id="week" className={anchor}>
+                <a
                   href={ticketsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="door flex h-full min-h-64 flex-col rounded-3xl p-6 md:p-7"
+                  data-tone="blush"
                 >
-                  Tickets on Humanitix
+                  <p className="text-sm font-bold">Community</p>
+                  <h2 className="mt-3 font-display text-3xl leading-none font-bold md:text-4xl">
+                    Come make films with us
+                  </h2>
+                  <p className="mt-3 max-w-md leading-7">
+                    Next up: Film Week for ages 8 to 17 at VentSpace, South
+                    Brisbane. 28 Sep–2 Oct 2026. One day or the full week.
+                  </p>
+                  <dl className="mt-5 space-y-3 text-sm">
+                    <div>
+                      <dt className="font-bold">Junior · ages 8–12</dt>
+                      <dd>Mon 1–4pm, then Tue–Fri 9am–12pm</dd>
+                    </div>
+                    <div>
+                      <dt className="font-bold">Senior · ages 13–17</dt>
+                      <dd>Mon 5–8pm, then Tue–Fri 1–4pm</dd>
+                    </div>
+                  </dl>
+                  <p className="mt-auto pt-8">
+                    <span className="inline-flex min-h-9 items-center rounded-full bg-ink px-4 text-sm font-bold text-cream">
+                      Book a spot
+                      <span className="sr-only"> (opens in a new tab)</span>
+                    </span>
+                  </p>
                 </a>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <article className="rounded-3xl bg-cream p-6">
-                  <p className="text-sm font-bold">Ages 8–12</p>
-                  <h3 className="mt-2 font-display text-2xl font-bold">Junior</h3>
-                  <dl className="mt-5 space-y-3 text-sm">
-                    <Time day="Monday" time="1–4pm" note="Script" />
-                    <Time day="Tue–Fri" time="9am–12pm" note="Board, shoot, cut, screen" />
-                  </dl>
-                </article>
-                <article className="rounded-3xl bg-gold p-6">
-                  <p className="text-sm font-bold">Ages 13–17</p>
-                  <h3 className="mt-2 font-display text-2xl font-bold">Senior</h3>
-                  <dl className="mt-5 space-y-3 text-sm">
-                    <Time day="Monday" time="5–8pm" note="Script" />
-                    <Time day="Tue–Fri" time="1–4pm" note="Board, shoot, cut, screen" />
-                  </dl>
-                </article>
-              </div>
-            </div>
-            <p className="mt-10 max-w-2xl leading-7 text-muted">
-              Carter hosts. A sensory guide and a social story go out before
-              the week. Ask for step-free access, parking, an accessible
-              bathroom, or a quiet sensory space.{" "}
+              </li>
+            </ul>
+            <p className="mt-8 max-w-2xl leading-7">
+              Carter hosts. A sensory guide and a social story go out before the
+              week. Ask for step-free access, parking, an accessible bathroom,
+              or a quiet sensory space.{" "}
               <a
-                className="font-bold text-ink underline decoration-ink/30 underline-offset-4"
+                className="font-bold underline decoration-ink/30 underline-offset-4"
                 href={mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -374,12 +183,150 @@ export default function Home() {
             </p>
           </div>
         </section>
+
+        <div className="bg-paper">
+          <section
+            id="production"
+            className={`${anchor} mx-auto max-w-[1120px] px-5 pt-16 md:px-8 md:pt-20`}
+          >
+            <p className="text-sm font-bold">Production services</p>
+            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight md:text-5xl">
+              Three ways to work with us
+            </h2>
+            <ul className="mt-8 grid gap-4 lg:grid-cols-3">
+              {services.map((service) => (
+                <li key={service.title}>
+                  <article
+                    data-tone={service.tone}
+                    className="door flex h-full min-h-52 flex-col rounded-3xl p-6"
+                  >
+                    <h3 className="font-display text-2xl font-bold">
+                      {service.title}
+                    </h3>
+                    <p className="mt-3 leading-7">{service.body}</p>
+                    <p className="mt-auto pt-8">
+                      <a
+                        href="#brief"
+                        className="text-sm font-bold underline decoration-ink/30 underline-offset-4"
+                      >
+                        Ask for a price
+                      </a>
+                    </p>
+                  </article>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="mx-auto grid max-w-[1120px] items-stretch gap-4 px-5 py-16 md:px-8 md:py-20 lg:grid-cols-2">
+            <article className="flex h-full flex-col rounded-3xl bg-sky p-6 md:p-8">
+              <p className="text-sm font-bold">Kit & workflow</p>
+              <h2 className="mt-3 font-display text-3xl leading-tight font-bold md:text-4xl">
+                Cinema-grade, indie-sized
+              </h2>
+              <p className="mt-4 max-w-md leading-7">
+                Development, a shoot, and a cut. The crew stays small. Carter
+                Jayne writes and directs from Meanjin.
+              </p>
+              <dl className="mt-8 divide-y divide-ink/15">
+                {kit.map((row) => (
+                  <div
+                    key={row.term}
+                    className="flex items-baseline justify-between gap-6 py-3 text-sm"
+                  >
+                    <dt className="font-bold">{row.term}</dt>
+                    <dd className="text-right">{row.detail}</dd>
+                  </div>
+                ))}
+              </dl>
+            </article>
+
+            <article
+              id="brief"
+              className={`${anchor} h-full rounded-3xl bg-gold p-6 md:p-8`}
+            >
+              <p className="text-sm font-bold">Project brief</p>
+              <h2 className="mt-3 font-display text-3xl leading-tight font-bold md:text-4xl">
+                Tell us what you are making
+              </h2>
+              <EnquiryForm email={email} />
+            </article>
+          </section>
+
+          <section
+            id="work"
+            className={`${anchor} mx-auto max-w-[1120px] px-5 pb-16 md:px-8 md:pb-24`}
+          >
+            <p className="text-sm font-bold">Filmography</p>
+            <div className="mt-3 flex items-end justify-between gap-6">
+              <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
+                Recent work
+              </h2>
+              <a
+                className="text-sm font-bold underline decoration-ink/30 underline-offset-4"
+                href={youtubeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                All films
+              </a>
+            </div>
+            <ul className="mt-8 grid gap-8 sm:grid-cols-2">
+              {films.map((film) => (
+                <li key={film.videoId}>
+                  <FilmPlayer
+                    videoId={film.videoId}
+                    title={`${film.title}, ${film.year}`}
+                  />
+                  <h3 className="mt-4 font-display text-2xl font-bold">
+                    {film.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-muted">
+                    {film.kind}
+                    <span aria-hidden="true"> · </span>
+                    {film.year}
+                    <span aria-hidden="true"> · </span>
+                    {film.runtime}
+                  </p>
+                  <p className="mt-3 max-w-md leading-7">{film.logline}</p>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-10 max-w-xl leading-7 text-muted">
+              Also, Song of Fairies Robbing an Orchard, with a backing track by
+              composer Kayley Nolan.{" "}
+              <a
+                className="font-bold text-ink underline decoration-ink/30 underline-offset-4"
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Instagram
+              </a>{" "}
+              carries Fighting Love and Project LL.
+            </p>
+          </section>
+        </div>
+
+        <section id="about" className={`${anchor} bg-blush`}>
+          <div className="mx-auto max-w-[1120px] px-5 py-16 md:px-8 md:py-24">
+            <p className="text-sm font-bold">About</p>
+            <h2 className="mt-4 max-w-3xl font-display text-[clamp(2.2rem,4.5vw,3.6rem)] leading-tight font-bold text-balance">
+              A human tryna make films to be appreciated by other humans.
+            </h2>
+            <p className="mt-6 max-w-xl text-lg leading-8">
+              Carter Jayne is a disabled filmmaker in Meanjin / Brisbane. They
+              write and direct the shorts, and they host Film Week for ages 8 to
+              17. Wheelie is the pun. Good is the standard.
+            </p>
+          </div>
+        </section>
       </main>
 
-      <footer id="contact" className="scroll-mt-20 bg-night text-cream">
+      <footer id="contact" className={`${anchor} bg-night text-cream`}>
         <div className="mx-auto grid max-w-[1120px] gap-10 px-5 py-14 md:grid-cols-3 md:px-8">
           <div>
-            <WheelMark className="size-8 text-cream" />
+            <WheelMark className="h-16 w-auto" />
             <p className="mt-4 font-display text-3xl leading-none font-bold">
               Wheelie Good Film
             </p>
@@ -388,7 +335,7 @@ export default function Home() {
           <div>
             <p className="text-sm font-bold">Visit</p>
             <ul className="mt-3 space-y-2 text-sm">
-              {nav.map((item) => (
+              {footerNav.map((item) => (
                 <li key={item.href}>
                   <a href={item.href}>{item.label}</a>
                 </li>
@@ -404,7 +351,11 @@ export default function Home() {
                 </a>
               </li>
               <li>
-                <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Instagram
                 </a>
               </li>
@@ -423,32 +374,5 @@ export default function Home() {
         </div>
       </footer>
     </>
-  );
-}
-
-function Fact({
-  term,
-  detail,
-}: {
-  term: string;
-  detail: ReactNode;
-}) {
-  return (
-    <div className="grid grid-cols-[7rem_1fr] gap-4 py-4">
-      <dt className="text-sm font-bold text-muted">{term}</dt>
-      <dd className="text-sm">{detail}</dd>
-    </div>
-  );
-}
-
-function Time({ day, time, note }: { day: string; time: string; note: string }) {
-  return (
-    <div className="flex items-baseline justify-between gap-4">
-      <dt>
-        {day}
-        <span className="mt-0.5 block text-muted">{note}</span>
-      </dt>
-      <dd className="font-medium">{time}</dd>
-    </div>
   );
 }

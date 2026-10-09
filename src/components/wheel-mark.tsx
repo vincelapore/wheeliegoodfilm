@@ -1,15 +1,21 @@
-export function WheelMark({ className }: { className?: string }) {
+import Image from "next/image";
+
+export function WheelMark({
+  className,
+  priority = false,
+}: {
+  className?: string;
+  priority?: boolean;
+}) {
   return (
-    <svg viewBox="0 0 32 32" className={className} aria-hidden="true">
-      <circle cx="16" cy="16" r="11.5" fill="none" stroke="currentColor" strokeWidth="1.75" />
-      <circle cx="16" cy="16" r="2.6" fill="#b24a36" />
-      <path
-        d="M16 5.2v21.6M5.2 16h21.6M8.4 8.4l15.2 15.2M23.6 8.4L8.4 23.6"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.75"
-      />
-    </svg>
+    <Image
+      src="/logo.png"
+      alt=""
+      width={640}
+      height={549}
+      priority={priority}
+      className={className}
+    />
   );
 }
 

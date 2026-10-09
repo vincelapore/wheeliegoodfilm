@@ -94,6 +94,10 @@ body {
   transition: background-color 160ms ease;
 }
 
+.nav-link[aria-current="true"] {
+  background-color: var(--gold);
+}
+
 .btn {
   transition:
     transform 140ms var(--ease-out),
@@ -141,12 +145,24 @@ body {
     background-color: var(--sky-deep);
   }
 
+  .menu-button:hover {
+    background-color: var(--sky-deep);
+  }
+
+  .nav-link[aria-current="true"]:hover {
+    background-color: var(--gold-deep);
+  }
+
   .btn-fill:hover {
     background-color: #122a38;
   }
 
   .btn-gold:hover {
     background-color: var(--gold-deep);
+  }
+
+  .btn-line:hover {
+    background-color: var(--cream);
   }
 
   .play:hover {
