@@ -6,12 +6,19 @@ const starPath =
 export function Star({
   className = "",
   variant = "fill",
+  delay = "0s",
 }: {
   className?: string;
   variant?: "fill" | "outline";
+  delay?: string;
 }) {
   return (
-    <svg viewBox="0 0 80 80" className={className} aria-hidden="true">
+    <svg
+      viewBox="0 0 80 80"
+      className={`star ${className}`}
+      style={{ "--drift-delay": delay } as CSSProperties}
+      aria-hidden="true"
+    >
       {variant === "outline" ? (
         <path
           d={starPath}
@@ -30,14 +37,17 @@ export function Star({
 export function Sequin({
   tone = "gold",
   className = "",
+  delay = "0s",
 }: {
   tone?: "gold" | "rose" | "green";
   className?: string;
+  delay?: string;
 }) {
   return (
     <span
       aria-hidden="true"
       className={`sequin sequin-${tone} inline-block ${className}`}
+      style={{ "--glint-delay": delay } as CSSProperties}
     />
   );
 }

@@ -1,21 +1,77 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef, type PointerEvent, type ReactNode } from "react";
+
+function spinMark(mark: Element) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (mark.getAnimations().some((animation) => animation.playState === "running")) {
+    return;
+  }
+
+  const easing = getComputedStyle(document.documentElement)
+    .getPropertyValue("--ease-out")
+    .trim();
+
+  mark.animate(
+    [{ transform: "rotate(0deg)" }, { transform: "rotate(360deg)" }],
+    { duration: 600, easing },
+  );
+}
+
+export function WheelFrame({
+  className,
+  children,
+}: {
+  className?: string;
+  children: ReactNode;
+}) {
+  function onPointerEnter(event: PointerEvent<HTMLSpanElement>) {
+    if (event.pointerType !== "mouse") return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+    const mark = event.currentTarget.querySelector(".wheel-mark");
+    if (!(mark instanceof Element)) return;
+    spinMark(mark);
+  }
+
+  return (
+    <span className={className} onPointerEnter={onPointerEnter}>
+      {children}
+    </span>
+  );
+}
 
 export function WheelMark({
   className,
   priority = false,
+  spinOnLoad = false,
 }: {
   className?: string;
   priority?: boolean;
+  spinOnLoad?: boolean;
 }) {
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (!spinOnLoad) return;
+    const frame = requestAnimationFrame(() => {
+      if (ref.current) spinMark(ref.current);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [spinOnLoad]);
+
   return (
-    <Image
-      src="/logo.png"
-      alt=""
-      width={640}
-      height={549}
-      priority={priority}
-      className={className}
-    />
+    <span ref={ref} className="wheel-mark inline-flex">
+      <Image
+        src="/logo.png"
+        alt=""
+        width={640}
+        height={549}
+        priority={priority}
+        className={className}
+      />
+    </span>
   );
 }
 

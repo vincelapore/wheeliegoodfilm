@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { WheelMark } from "@/components/wheel-mark";
+import { WheelFrame, WheelMark } from "@/components/wheel-mark";
 
 const nav = [
   { href: "#week", label: "Workshops" },
@@ -81,9 +81,9 @@ export function SiteHeader() {
           className="flex min-h-11 items-center gap-3"
           onClick={closeMenu}
         >
-          <span className="inline-flex shrink-0 -rotate-3 bg-cream p-1 shadow-[0_6px_10px_rgba(44,44,40,0.12)]">
-            <WheelMark priority className="h-9 w-auto md:h-11" />
-          </span>
+          <WheelFrame className="inline-flex shrink-0 -rotate-3 bg-cream p-1 shadow-[0_6px_10px_rgba(44,44,40,0.12)]">
+            <WheelMark priority spinOnLoad className="h-9 w-auto md:h-11" />
+          </WheelFrame>
           <span className="wordmark max-w-[9.2rem] sm:max-w-none">
             A Wheelie Good Film Company
           </span>

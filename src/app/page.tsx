@@ -1,7 +1,6 @@
 import {
   BinderClip,
   Mount,
-  Paperclip,
   PunchHoles,
   Scrap,
   Sequin,
@@ -11,14 +10,12 @@ import Image from "next/image";
 import { EnquiryForm } from "@/components/enquiry-form";
 import { FilmPlayer } from "@/components/film-player";
 import { SiteHeader } from "@/components/site-header";
-import { WheelMark } from "@/components/wheel-mark";
+import { WheelFrame, WheelMark } from "@/components/wheel-mark";
 
 const ticketsUrl = "https://events.humanitix.com/wheelie-good-film-week";
 const instagramUrl = "https://www.instagram.com/wheeliegoodfilm.co/";
 const youtubeUrl = "https://www.youtube.com/@wheeliegoodfilmcompany";
 const email = "wheeliegoodfilm.co@outlook.com";
-const mapsUrl =
-  "https://www.google.com/maps/search/?api=1&query=23+Glenelg+Street+South+Brisbane+QLD+4101";
 
 const footerNav = [
   { href: "#work", label: "Work" },
@@ -88,16 +85,39 @@ export default function Home() {
             aria-hidden="true"
             className="pointer-events-none absolute inset-0"
           >
-            <Star className="absolute top-4 left-[3%] size-14 text-pine md:size-20" />
-            <Star className="absolute top-10 right-[4%] size-12 text-mist md:top-16 md:size-16" />
+            <Star
+              delay="-1.2s"
+              className="absolute top-4 left-[3%] size-14 text-pine md:size-20"
+            />
+            <Star
+              delay="-4.4s"
+              className="absolute top-10 right-[4%] size-12 text-mist md:top-16 md:size-16"
+            />
             <Star
               variant="outline"
+              delay="-6.8s"
               className="absolute right-[18%] bottom-8 hidden size-14 text-cream md:block"
             />
-            <Sequin tone="gold" className="absolute top-6 right-[16%]" />
-            <Sequin tone="rose" className="absolute top-12 right-[12%]" />
-            <Sequin tone="green" className="absolute bottom-10 left-[7%]" />
-            <Sequin tone="rose" className="absolute bottom-6 left-[11%]" />
+            <Sequin
+              tone="gold"
+              delay="-0.4s"
+              className="absolute top-6 right-[16%]"
+            />
+            <Sequin
+              tone="rose"
+              delay="-2.2s"
+              className="absolute top-12 right-[12%]"
+            />
+            <Sequin
+              tone="green"
+              delay="-3.8s"
+              className="absolute bottom-10 left-[7%]"
+            />
+            <Sequin
+              tone="rose"
+              delay="-5.4s"
+              className="absolute bottom-6 left-[11%]"
+            />
           </div>
 
           <div className="relative z-[1] mx-auto max-w-[1120px] px-5 pt-8 pb-8 md:px-8 md:pt-12">
@@ -224,25 +244,6 @@ export default function Home() {
                 </a>
               </li>
             </ul>
-            <div className="relative mx-auto mt-12 max-w-2xl">
-              <Paperclip className="pointer-events-none absolute -top-4 left-8 z-20 h-16 w-8 -rotate-12 text-pine" />
-              <Scrap paper="plain" tilt="0.4deg" tear="c" className="p-6 md:p-8">
-                <p className="leading-7">
-                  Carter hosts. A sensory guide and a social story go out
-                  before the week. Ask for step-free access, parking, an
-                  accessible bathroom, or a quiet sensory space.{" "}
-                  <a
-                    className="font-semibold underline decoration-ink/30 underline-offset-4"
-                    href={mapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    23 Glenelg Street, South Brisbane
-                  </a>
-                  .
-                </p>
-              </Scrap>
-            </div>
           </div>
         </section>
 
@@ -252,6 +253,7 @@ export default function Home() {
         >
           <Star
             variant="outline"
+            delay="-2.8s"
             className="pointer-events-none absolute top-0 right-[8%] hidden size-16 text-cream md:block"
           />
           <p className="kicker">Production services</p>
@@ -363,7 +365,10 @@ export default function Home() {
         </section>
 
         <section id="about" className={`${anchor} relative`}>
-          <Star className="pointer-events-none absolute top-8 right-[7%] hidden size-16 text-mist md:block" />
+          <Star
+            delay="-5.6s"
+            className="pointer-events-none absolute top-8 right-[7%] hidden size-16 text-mist md:block"
+          />
           <div className="mx-auto grid max-w-[1120px] items-start gap-10 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
             <Mount tilt="-0.8deg" className="px-3 pt-3 pb-4">
               <Image
@@ -416,9 +421,9 @@ export default function Home() {
       <footer id="contact" className={`${anchor} footer-edge bg-pine text-cream`}>
         <div className="mx-auto grid max-w-[1120px] gap-10 px-5 pt-16 pb-14 md:grid-cols-3 md:px-8">
           <div>
-            <span className="inline-flex rotate-2 bg-cream p-1.5">
+            <WheelFrame className="inline-flex rotate-2 bg-cream p-1.5">
               <WheelMark className="h-16 w-auto" />
-            </span>
+            </WheelFrame>
             <p className="wordmark mt-4 text-cream">
               A Wheelie Good Film Company
             </p>
