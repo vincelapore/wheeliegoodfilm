@@ -1,30 +1,25 @@
 # A Wheelie Good Film Company
 
-Marketing and booking site for a Brisbane film company: short films, brand work, actor showreels, and a youth Film Week.
+Site for a Meanjin / Brisbane film company: short films, brand work, actor showreels, and a youth Film Week.
 
 **Live:** [wheeliegoodfilm.vercel.app](https://wheeliegoodfilm.vercel.app)
 
 ## Overview
 
-A Wheelie Good Film Company is the public site for Carter Jayne's film practice in Meanjin / Brisbane. It presents recent shorts, production services, Film Week details for ages 8 to 17, and a project enquiry form that opens a prefilled email.
+I built this as the public face of Carter Jayne's film practice. One scrolling page covers the recent shorts, how to hire them, Film Week for ages 8 to 17 at VentSpace, and a project enquiry form that opens a prefilled email to the company inbox.
 
-Built as a polished, single-page marketing experience with custom typography, collage imagery, and an embedded film player for recent work.
+## What's on the site
 
-## Features
-
-- Hero, services, Film Week, and filmography sections on one scrolling page
-- Production offerings: short films, commercial and brand work, actor showreels
-- Film Week schedule blocks for junior (ages 8–12) and senior (ages 13–17) cohorts
-- Project enquiry form (name, budget, timeline) that drafts an email to the company inbox
-- Film player and collage presentation for recent shorts such as *The Stars* (2024)
+- Services for short films, commercial/brand work, and actor showreels
+- Film Week blocks for junior (8–12) and senior (13–17) cohorts, with dates and booking links
+- Enquiry form: project name, budget range, timeline
+- Filmography with an embedded player (including *The Stars*, 2024)
+- Custom typography and collage layout rather than a stock template look
 
 ## Tech stack
 
-- Next.js (App Router)
-- React
-- TypeScript
-- Tailwind CSS
-- Deployed on Vercel
+- Next.js (App Router), React, TypeScript, Tailwind CSS
+- Hosted on Vercel
 
 ## Getting started
 
@@ -37,7 +32,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Deploy
 
-Hosted on [Vercel](https://vercel.com). Connect the repo and use the default Next.js build settings.
+On Vercel with the default Next.js settings.
 
 ## Author
 
