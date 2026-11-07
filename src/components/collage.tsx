@@ -1,38 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 
-const starPath =
-  "M40 1.5 48.2 24.8 73.2 15.2 56.8 36.2 78.5 44 55.6 52.4 68.8 76.2 40 60.5 11.2 76.2 24.4 52.4 1.5 44 23.2 36.2 6.8 15.2 31.8 24.8Z";
-
-export function Star({
-  className = "",
-  variant = "fill",
-  delay = "0s",
-}: {
-  className?: string;
-  variant?: "fill" | "outline";
-  delay?: string;
-}) {
-  return (
-    <svg
-      viewBox="0 0 80 80"
-      className={`star ${className}`}
-      style={{ "--drift-delay": delay } as CSSProperties}
-      aria-hidden="true"
-    >
-      {variant === "outline" ? (
-        <path
-          d={starPath}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.4"
-          strokeLinejoin="round"
-        />
-      ) : (
-        <path d={starPath} fill="currentColor" />
-      )}
-    </svg>
-  );
-}
+export { Star } from "@/components/star";
 
 export function Sequin({
   tone = "gold",
@@ -43,11 +11,13 @@ export function Sequin({
   className?: string;
   delay?: string;
 }) {
+  const drift = tone === "gold" ? "a" : tone === "rose" ? "b" : "c";
+
   return (
     <span
       aria-hidden="true"
-      className={`sequin sequin-${tone} inline-block ${className}`}
-      style={{ "--glint-delay": delay } as CSSProperties}
+      className={`sequin sequin-${tone} backdrop-float backdrop-drift-${drift} inline-block ${className}`}
+      style={{ "--drift-delay": delay } as CSSProperties}
     />
   );
 }

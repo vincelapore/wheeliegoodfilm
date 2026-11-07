@@ -3,6 +3,7 @@
 :root {
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
   --sage: #9aab8f;
   --ink: #2c2c28;
   --muted: #3e4438;
@@ -97,9 +98,9 @@ body {
 
 .scrap-shadow {
   --tilt: 0deg;
-  transform: rotate(var(--tilt));
+  rotate: var(--tilt);
   filter: drop-shadow(0 14px 16px rgba(44, 44, 40, 0.16));
-  transition: transform 180ms var(--ease-out);
+  transition: translate 180ms var(--ease-out);
 }
 
 .paper-plain {
@@ -249,6 +250,44 @@ body {
     inset 1.5px 1.5px 2px rgba(255, 255, 255, 0.72);
 }
 
+.sparkle-trail .sparkle-bit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  will-change: transform, opacity;
+}
+
+.sparkle-trail .sparkle-dot {
+  overflow: hidden;
+  border-radius: 999px;
+  box-shadow:
+    inset -1px -1px 2px rgba(0, 0, 0, 0.28),
+    inset 1.5px 1.5px 2px rgba(255, 255, 255, 0.72);
+}
+
+.sparkle-trail .sparkle-gold {
+  background: radial-gradient(circle at 35% 35%, #f3d48a, #c4963c 58%, #8d6428);
+}
+
+.sparkle-trail .sparkle-rose {
+  background: radial-gradient(circle at 35% 35%, #f6d2c8, #d88878 58%, #a85c56);
+}
+
+.sparkle-trail .sparkle-green {
+  background: radial-gradient(circle at 35% 35%, #9ed6ae, #2f7a4c 60%, #1c4a30);
+}
+
+.sparkle-trail .sparkle-star {
+  filter: drop-shadow(0 1px 1px rgba(44, 44, 40, 0.18));
+}
+
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+  .sparkle-trail {
+    display: none;
+  }
+}
+
 .sequin-gold {
   background: radial-gradient(circle at 35% 35%, #f3d48a, #c4963c 58%, #8d6428);
 }
@@ -259,6 +298,76 @@ body {
 
 .sequin-green {
   background: radial-gradient(circle at 35% 35%, #9ed6ae, #2f7a4c 60%, #1c4a30);
+}
+
+.menu-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+}
+
+.menu-modal-scrim {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgb(44 44 40 / 0.42);
+  opacity: 0;
+  transition: opacity 240ms var(--ease-out);
+}
+
+.menu-modal[data-open="true"] .menu-modal-scrim {
+  opacity: 1;
+}
+
+.menu-modal-stage {
+  position: relative;
+  z-index: 1;
+}
+
+.menu-modal-stage:focus,
+.menu-modal-stage:focus-visible,
+.menu-modal-scrim:focus,
+.menu-modal-scrim:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.menu-modal-paper {
+  opacity: 0;
+  transform: scale(0.92) rotate(-4deg);
+  transform-origin: 50% 45%;
+  transition:
+    opacity 200ms var(--ease-out),
+    transform 260ms var(--ease-drawer);
+}
+
+.menu-modal[data-open="true"] .menu-modal-paper {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.menu-modal[data-open="false"] .menu-modal-paper {
+  opacity: 0;
+  transform: scale(0.94) rotate(3deg);
+  transition:
+    opacity 180ms var(--ease-out),
+    transform 240ms var(--ease-drawer);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-modal-scrim,
+  .menu-modal-paper {
+    transition-duration: 140ms;
+  }
+
+  .menu-modal-paper,
+  .menu-modal[data-open="true"] .menu-modal-paper,
+  .menu-modal[data-open="false"] .menu-modal-paper {
+    transform: none;
+  }
 }
 
 .nav-link {
@@ -283,7 +392,7 @@ body {
 
 .play {
   transition:
-    transform 140ms var(--ease-out),
+    scale 140ms var(--ease-out),
     background-color 160ms ease;
 }
 
@@ -309,7 +418,7 @@ body {
 
 @media (hover: hover) and (pointer: fine) {
   .scrap-shadow:hover {
-    transform: rotate(var(--tilt)) translateY(-4px);
+    translate: 0 -4px;
   }
 
   .nav-link:hover {
@@ -324,37 +433,56 @@ body {
     background-color: color-mix(in srgb, var(--cream) 78%, transparent);
   }
 
-  .play:hover {
-    transform: translate(-50%, -50%) scale(1.04);
+  .group:hover .play {
+    scale: 1.04;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .sequin::after {
-    content: "";
-    position: absolute;
-    inset: -70%;
-    background: conic-gradient(
-      from 0deg,
-      transparent 0deg,
-      transparent 300deg,
-      rgba(255, 255, 255, 0.2) 328deg,
-      rgba(255, 255, 255, 0.95) 344deg,
-      transparent 358deg
-    );
-    animation: sequin-glint 6.5s linear infinite;
-    animation-delay: var(--glint-delay, 0s);
-  }
+.backdrop-blob {
+  display: block;
+  border-radius: 999px;
+}
 
+.backdrop-ring {
+  display: block;
+  border-radius: 999px;
+  border-width: 2px;
+  border-style: solid;
+  background: transparent;
+}
+
+.backdrop-confetti {
+  display: block;
+  border-radius: 1px;
+}
+
+.backdrop-float {
+  transform: rotate(var(--rest-rotate, 0deg));
+}
+
+@media (prefers-reduced-motion: no-preference) {
   .star {
     animation: star-drift 8s var(--ease-in-out) infinite alternate;
     animation-delay: var(--drift-delay, 0s);
   }
-}
 
-@keyframes sequin-glint {
-  to {
-    transform: rotate(360deg);
+  /* Same language as star-drift — soft float + yaw, staggered. */
+  .backdrop-drift-a {
+    animation: shape-drift-a var(--drift-duration, 9s) var(--ease-in-out)
+      infinite alternate;
+    animation-delay: var(--drift-delay, 0s);
+  }
+
+  .backdrop-drift-b {
+    animation: shape-drift-b var(--drift-duration, 11s) var(--ease-in-out)
+      infinite alternate;
+    animation-delay: var(--drift-delay, 0s);
+  }
+
+  .backdrop-drift-c {
+    animation: shape-drift-c var(--drift-duration, 10s) var(--ease-in-out)
+      infinite alternate;
+    animation-delay: var(--drift-delay, 0s);
   }
 }
 
@@ -368,17 +496,52 @@ body {
   }
 }
 
+@keyframes shape-drift-a {
+  from {
+    transform: translateY(0) rotate(var(--rest-rotate, 0deg));
+  }
+
+  to {
+    transform: translateY(-5px) rotate(calc(var(--rest-rotate, 0deg) + 7deg));
+  }
+}
+
+@keyframes shape-drift-b {
+  from {
+    transform: translate3d(0, 0, 0) rotate(var(--rest-rotate, 0deg));
+  }
+
+  to {
+    transform: translate3d(4px, -4px, 0)
+      rotate(calc(var(--rest-rotate, 0deg) - 6deg));
+  }
+}
+
+@keyframes shape-drift-c {
+  from {
+    transform: translate3d(0, 0, 0) rotate(var(--rest-rotate, 0deg));
+  }
+
+  to {
+    transform: translate3d(-3px, -6px, 0)
+      rotate(calc(var(--rest-rotate, 0deg) + 5deg));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .btn:active {
     transform: none;
   }
 
+  .scrap-shadow,
   .scrap-shadow:hover {
-    transform: rotate(var(--tilt));
+    transition: none;
+    translate: none;
   }
 
-  .play:hover {
-    transform: translate(-50%, -50%);
+  .play,
+  .group:hover .play {
+    scale: 1;
   }
 }
 

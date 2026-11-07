@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Source_Serif_4 } from "next/font/google";
+import type { ReactNode } from "react";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -22,17 +23,13 @@ export const metadata: Metadata = {
     "A Wheelie Good Film Company. Short films written and directed by Carter Jayne in Meanjin / Brisbane, and a film week for ages 8 to 17.",
 };
 
-export const viewport = {
-  themeColor: "#9aab8f",
-};
-
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
       className={`${playfair.variable} ${sourceSerif.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-sage font-sans text-ink">{children}</body>
+      <body className="min-h-full">{children}</body>
     </html>
   );
 }

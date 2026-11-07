@@ -36,6 +36,14 @@ yarn-error.log*
 # vercel
 .vercel
 
+# sanity
+.sanity/
+/dist/
+
+# leftover local studio scaffolds (not used by the Next app)
+/project-cerulean-paddle/
+/wheelie-good/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

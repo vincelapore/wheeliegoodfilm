@@ -1,7 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Keep the default Next.js config; this file exists so deploys have a tracked config.
+  transpilePackages: ["paperlab", "three", "@react-three/fiber", "@react-three/drei"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+        pathname: "/images/**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
