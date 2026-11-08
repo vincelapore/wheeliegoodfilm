@@ -61,8 +61,9 @@ export function SparkleTrail() {
   const layerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const layer = layerRef.current;
-    if (!layer || !canSparkle()) return;
+    const layerEl = layerRef.current;
+    if (!layerEl || !canSparkle()) return;
+    const layer: HTMLDivElement = layerEl;
 
     const particles: Particle[] = [];
     let lastX = Number.NaN;
